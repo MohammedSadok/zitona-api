@@ -23,7 +23,7 @@ public class Parcelle {
     private int nombreDarbre;
     @Enumerated(EnumType.STRING)
     private Variete varieter;
-    private String locatisation;
+    private String localisation;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateDePlantation;
     private String commentaire;
