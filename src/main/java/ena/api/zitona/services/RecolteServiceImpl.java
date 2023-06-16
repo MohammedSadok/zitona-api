@@ -39,6 +39,8 @@ public class RecolteServiceImpl implements RecolteService{
 
     @Override
     public Recolte updateRecolte(Recolte recolte) {
+//        recolteRepository.updateRecolte(recolte.getId(),recolte.getCommentaire(),
+//                recolte.getCout(), recolte.getDate(), String.valueOf(recolte.getMethode()), recolte.getQualite(), recolte.getQuantite());
         return recolteRepository.save(recolte);
     }
 
