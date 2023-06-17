@@ -23,5 +23,6 @@ public class User {
     private String motDePasse;
     private boolean isAdmin;
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<Parcelle> parcelles;
 }
