@@ -1,8 +1,5 @@
 package ena.api.zitona.controllers;
 import ena.api.zitona.entitys.Fertilisation;
-import ena.api.zitona.entitys.Maladie;
-import ena.api.zitona.entitys.Parcelle;
-import ena.api.zitona.entitys.Recolte;
 import ena.api.zitona.response.ResponseData;
 import ena.api.zitona.services.FertilisationService;
 import org.springframework.http.HttpStatus;
