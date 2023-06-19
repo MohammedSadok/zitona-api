@@ -33,8 +33,8 @@ public class TraitementController {
             ResponseData<Traitement> responseData = new ResponseData<>(traitement, HttpStatus.OK, "Traitement retrieved successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Recolte not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.OK, "Recolte not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -46,8 +46,8 @@ public class TraitementController {
             ResponseData<Traitement> responseData = new ResponseData<>(updatedTraitement, HttpStatus.OK, "Traitement updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Traitement not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.OK, "Traitement not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -59,8 +59,8 @@ public class TraitementController {
             ResponseData<Traitement> responseData = new ResponseData<>(traitement, HttpStatus.OK, "Traitement deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Traitement not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Traitement> responseData = new ResponseData<>(null, HttpStatus.OK, "Traitement not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -78,8 +78,8 @@ public class TraitementController {
             ResponseData<List<Traitement>> responseData = new ResponseData<>(traitements, HttpStatus.OK, "Retrieved recoltes by Parcelle ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<List<Traitement>> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "No recoltes found for the given Parcelle ID");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<List<Traitement>> responseData = new ResponseData<>(null, HttpStatus.OK, "No recoltes found for the given Parcelle ID");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 }

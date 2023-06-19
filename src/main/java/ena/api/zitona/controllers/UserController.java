@@ -33,7 +33,7 @@ public class UserController {
         if (user != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(user, HttpStatus.OK, "User Details are given here"));
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(null, HttpStatus.NOT_FOUND, "User not found"));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(null, HttpStatus.OK, "User not found"));
     }
 
     @GetMapping("/email/{email}")
@@ -42,7 +42,7 @@ public class UserController {
         if (user.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(user, HttpStatus.OK, "User Details are given here"));
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(null, HttpStatus.NOT_FOUND, "User not found"));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(null, HttpStatus.OK, "User not found"));
     }
 
     @PostMapping
@@ -51,7 +51,7 @@ public class UserController {
             User savedUser = userService.saveUser(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseData<>(savedUser, HttpStatus.CREATED, "User created successfully"));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseData<>(null, HttpStatus.NOT_FOUND, e.getMessage()));
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseData<>(null, HttpStatus.OK, e.getMessage()));
         }
     }
 
@@ -62,7 +62,7 @@ public class UserController {
             User updatedUser = userService.updateUser(user);
             return ResponseEntity.ok(new ResponseData<>(updatedUser, HttpStatus.OK, "User updated successfully"));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseData<>(null, HttpStatus.NOT_FOUND, "User not found"));
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseData<>(null, HttpStatus.OK, "User not found"));
         }
     }
 
@@ -73,7 +73,7 @@ public class UserController {
             userService.deleteUser(user);
             return ResponseEntity.ok(new ResponseData<>(user, HttpStatus.OK, "User deleted successfully"));
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseData<>(null, HttpStatus.NOT_FOUND, "User not found"));
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseData<>(null, HttpStatus.OK, "User not found"));
     }
 
 }

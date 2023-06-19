@@ -38,8 +38,8 @@ public class FertilisationController {
             ResponseData<Fertilisation> responseData = new ResponseData<>(fertilisation, HttpStatus.OK, "Fertilisation found");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Fertilisation> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Fertilisation not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Fertilisation> responseData = new ResponseData<>(null, HttpStatus.OK, "Fertilisation not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -59,8 +59,8 @@ public class FertilisationController {
             ResponseData<Fertilisation> responseData = new ResponseData<>(fertilisation, HttpStatus.OK, "Fertilisation deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Fertilisation> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Fertilisation not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Fertilisation> responseData = new ResponseData<>(null, HttpStatus.OK, "Fertilisation not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -73,8 +73,8 @@ public class FertilisationController {
             return ResponseEntity.ok(responseData);
 
         } else {
-            ResponseData<List<Fertilisation>> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "No Fertilisation found for the given Parcelle ID");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<List<Fertilisation>> responseData = new ResponseData<>(null, HttpStatus.OK, "No Fertilisation found for the given Parcelle ID");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 }

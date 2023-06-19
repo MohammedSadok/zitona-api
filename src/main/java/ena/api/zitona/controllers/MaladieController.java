@@ -39,8 +39,8 @@ public class MaladieController {
             ResponseData<Maladie> responseData = new ResponseData<>(maladie, HttpStatus.OK, "Retrieved maladie by ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Maladie not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.OK, "Maladie not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -52,8 +52,8 @@ public class MaladieController {
             ResponseData<Maladie> responseData = new ResponseData<>(updatedMaladie, HttpStatus.OK, "Maladie updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Maladie not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.OK, "Maladie not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -65,8 +65,8 @@ public class MaladieController {
             ResponseData<Maladie> responseData = new ResponseData<>(maladie, HttpStatus.OK, "Maladie deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Maladie not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Maladie> responseData = new ResponseData<>(null, HttpStatus.OK, "Maladie not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 }

@@ -41,8 +41,8 @@ public class ParcelleMaladeController {
             ResponseData<ParcelleMalade> responseData = new ResponseData<>(parcelleMalade, HttpStatus.OK, "Retrieved parcelle malade by ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle malade not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle malade not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -54,8 +54,8 @@ public class ParcelleMaladeController {
             ResponseData<ParcelleMalade> responseData = new ResponseData<>(updatedParcelleMalade, HttpStatus.OK, "Parcelle malade updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle malade not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle malade not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -67,8 +67,8 @@ public class ParcelleMaladeController {
             ResponseData<ParcelleMalade> responseData = new ResponseData<>(parcelleMalade, HttpStatus.OK, "Parcelle malade deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle malade not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<ParcelleMalade> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle malade not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -79,8 +79,8 @@ public class ParcelleMaladeController {
             ResponseData<List<ParcelleMalade>> responseData = new ResponseData<>(parcelleMalades, HttpStatus.OK, "Retrieved parcelleMalade by Parcelle ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<List<ParcelleMalade>> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "No parcelleMalade found for the given Parcelle ID");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<List<ParcelleMalade>> responseData = new ResponseData<>(null, HttpStatus.OK, "No parcelleMalade found for the given Parcelle ID");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 }

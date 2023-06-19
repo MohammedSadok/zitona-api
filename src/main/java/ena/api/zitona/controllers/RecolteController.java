@@ -41,8 +41,8 @@ public class RecolteController {
             ResponseData<Recolte> responseData = new ResponseData<>(recolte, HttpStatus.OK, "Retrieved recolte by ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Recolte not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.OK, "Recolte not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -54,8 +54,8 @@ public class RecolteController {
             ResponseData<Recolte> responseData = new ResponseData<>(updatedRecolte, HttpStatus.OK, "Recolte updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Recolte not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.OK, "Recolte not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -67,8 +67,8 @@ public class RecolteController {
             ResponseData<Recolte> responseData = new ResponseData<>(recolte, HttpStatus.OK, "Recolte deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Recolte not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Recolte> responseData = new ResponseData<>(null, HttpStatus.OK, "Recolte not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -79,8 +79,8 @@ public class RecolteController {
             ResponseData<List<Recolte>> responseData = new ResponseData<>(recoltes, HttpStatus.OK, "Retrieved recoltes by Parcelle ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<List<Recolte>> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "No recoltes found for the given Parcelle ID");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<List<Recolte>> responseData = new ResponseData<>(null, HttpStatus.OK, "No recoltes found for the given Parcelle ID");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 }

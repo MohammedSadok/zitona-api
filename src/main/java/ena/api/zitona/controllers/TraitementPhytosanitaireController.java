@@ -40,8 +40,8 @@ public class TraitementPhytosanitaireController {
             ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(traitement, HttpStatus.OK, "Retrieved traitement phytosanitaire by ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Traitement phytosanitaire not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.OK, "Traitement phytosanitaire not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -53,8 +53,8 @@ public class TraitementPhytosanitaireController {
             ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(updatedTraitement, HttpStatus.OK, "Traitement phytosanitaire updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Traitement phytosanitaire not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.OK, "Traitement phytosanitaire not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -66,8 +66,8 @@ public class TraitementPhytosanitaireController {
             ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(traitement, HttpStatus.OK, "Traitement phytosanitaire deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Traitement phytosanitaire not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<TraitementPhytosanitaire> responseData = new ResponseData<>(null, HttpStatus.OK, "Traitement phytosanitaire not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 

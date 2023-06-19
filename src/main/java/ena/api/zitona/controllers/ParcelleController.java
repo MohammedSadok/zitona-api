@@ -40,8 +40,8 @@ public class ParcelleController {
             ResponseData<Parcelle> responseData = new ResponseData<>(parcelle, HttpStatus.OK, "Parcelle retrieved successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -53,8 +53,8 @@ public class ParcelleController {
             ResponseData<Parcelle> responseData = new ResponseData<>(updatedParcelle, HttpStatus.OK, "Parcelle updated successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -66,8 +66,8 @@ public class ParcelleController {
             ResponseData<Parcelle> responseData = new ResponseData<>(parcelle, HttpStatus.OK, "Parcelle deleted successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "Parcelle not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
@@ -78,8 +78,8 @@ public class ParcelleController {
             ResponseData<List<Parcelle>> responseData = new ResponseData<>(parcelles, HttpStatus.OK, "Retrieved All parcelles by User ID successfully");
             return ResponseEntity.ok(responseData);
         } else {
-            ResponseData<List<Parcelle>> responseData = new ResponseData<>(null, HttpStatus.NOT_FOUND, "No parcelle found for the given User ID");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
+            ResponseData<List<Parcelle>> responseData = new ResponseData<>(null, HttpStatus.OK, "No parcelle found for the given User ID");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }
 
