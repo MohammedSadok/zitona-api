@@ -21,7 +21,7 @@ public class Traitement {
     private Date date;
     private String typeTraitement;
     private String Description;
-
+    private float cout;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Parcelle parcelle;
