@@ -3,7 +3,6 @@ package ena.api.zitona.controllers;
 import ena.api.zitona.entitys.Recolte;
 import ena.api.zitona.response.ResponseData;
 import ena.api.zitona.services.RecolteService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -82,5 +81,13 @@ public class RecolteController {
             ResponseData<List<Recolte>> responseData = new ResponseData<>(null, HttpStatus.OK, "No recoltes found for the given Parcelle ID");
             return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
+    }
+
+    @GetMapping("/parcelle/count_recolt/{parcelleId}")
+    public ResponseEntity<ResponseData<Double>> calculateTotalQuantiteByParcelleId(@PathVariable Long parcelleId) {
+        double total = recolteService.calculateTotalQuantiteByParcelleId(parcelleId);
+        ResponseData<Double> responseData = new ResponseData<>(total, HttpStatus.OK, "Retrieved total recoltes by Parcelle ID successfully");
+        return ResponseEntity.ok(responseData);
+
     }
 }

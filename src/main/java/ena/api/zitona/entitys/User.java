@@ -27,6 +27,7 @@ public class User implements UserDetails {
     private String email;
     private String telephone;
     private String password;
+    private String deviceToken;
     @Enumerated(EnumType.STRING)
     private Role role;
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)

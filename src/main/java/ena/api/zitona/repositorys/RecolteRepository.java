@@ -19,4 +19,7 @@ public interface RecolteRepository extends JpaRepository<Recolte, Long> {
     void updateRecolte(@Param("id") Long id, @Param("commentaire") String commentaire
             , @Param("cout") float cout, @Param("date") Date date, @Param("methode") String methode
             , @Param("qualite") String qualite, @Param("quantite") double quantite);
+
+    @Query("SELECT SUM(r.quantite) FROM Recolte r WHERE r.parcelle.id = :parcelleId")
+    double calculateTotalQuantiteByParcelleId(@Param("parcelleId") Long parcelleId);
 }

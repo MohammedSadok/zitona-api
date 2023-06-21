@@ -48,4 +48,9 @@ public class RecolteServiceImpl implements RecolteService{
     public List<Recolte> findAllByParcelleId(Long parcelleId) {
         return recolteRepository.findAllByParcelleId(parcelleId);
     }
+
+    @Override
+    public double calculateTotalQuantiteByParcelleId(Long parcelleId) {
+        return recolteRepository.calculateTotalQuantiteByParcelleId(parcelleId);
+    }
 }
