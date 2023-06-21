@@ -1,23 +1,32 @@
 package ena.api.zitona.controllers;
 
+import ena.api.zitona.entitys.NotificationMessage;
 import ena.api.zitona.entitys.Task;
+import ena.api.zitona.repositorys.ParcelleRepository;
 import ena.api.zitona.response.ResponseData;
+import ena.api.zitona.services.PushNotificationService;
 import ena.api.zitona.services.TaskService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
     private final TaskService taskService;
+    private final PushNotificationService pushNotificationService;
+    private final ParcelleRepository parcelleRepository;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, PushNotificationService pushNotificationService, ParcelleRepository parcelleRepository) {
         this.taskService = taskService;
+        this.pushNotificationService = pushNotificationService;
+        this.parcelleRepository = parcelleRepository;
     }
+
 
     @GetMapping("/parcelle/{id}")
     public ResponseEntity<ResponseData<List<Task>>> getTasksByParcelleId(@PathVariable Long id) {
@@ -26,18 +35,28 @@ public class TaskController {
         return ResponseEntity.ok(responseData);
     }
 
-    @GetMapping("/parcelle/{id}/date/{date}")
-    public ResponseEntity<ResponseData<List<Task>>> getTasksByParcelleIdAndDate(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
-        List<Task> tasks = taskService.findTasksByParcelleIdAndDate(id, date);
+    @GetMapping("/parcelle/{id}/today")
+    public ResponseEntity<ResponseData<List<Task>>> getTasksByParcelleIdAndDate(
+            @PathVariable Long id) {
+        Date date = new Date();
+        SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd");
+        String stringDate = DateFor.format(date);
+        System.out.println(stringDate);
+        System.out.println(stringDate);
+        List<Task> tasks = taskService.findTasksByParcelleIdAndDate(id, stringDate);
         ResponseData<List<Task>> responseData = new ResponseData<>(tasks, HttpStatus.OK, "Tasks retrieved successfully.");
         return ResponseEntity.ok(responseData);
     }
 
     @PostMapping
     public ResponseEntity<ResponseData<Task>> saveTask(@RequestBody Task task) {
+        long id = parcelleRepository.findUserIdByParcelleId(task.getParcelle().getId());
+        NotificationMessage notificationMessage = new NotificationMessage(id,task.getObject(),task.getContent());
+        pushNotificationService.sendNotificationByToken(notificationMessage);
         Task savedTask = taskService.saveTask(task);
         ResponseData<Task> responseData = new ResponseData<>(savedTask, HttpStatus.CREATED, "Task saved successfully.");
         return ResponseEntity.status(HttpStatus.CREATED).body(responseData);
+
     }
 
     @GetMapping("/{id}")

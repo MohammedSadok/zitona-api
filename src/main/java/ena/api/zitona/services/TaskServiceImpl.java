@@ -24,8 +24,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> findTasksByParcelleIdAndDate(Long parcelle_id, Date date) {
-        return taskRepository.findTasksByParcelleIdAndDate(parcelle_id, date);
+    public List<Task> findTasksByParcelleIdAndDate(Long parcelle_id, String date) {
+        return taskRepository.findTasksByParcelleIdAndDateLike(parcelle_id, date);
     }
 
 

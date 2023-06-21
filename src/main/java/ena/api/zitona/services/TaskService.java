@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TaskService {
         List<Task> getTasksByParcelleId(Long id);
-        List<Task> findTasksByParcelleIdAndDate (Long parcelle_id, Date date);
+        List<Task> findTasksByParcelleIdAndDate (Long parcelle_id, String date);
         Task saveTask(Task task);
         Task getTaskById(Long id);
         List<Task> getAllTasks();

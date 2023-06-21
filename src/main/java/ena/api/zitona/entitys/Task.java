@@ -20,8 +20,7 @@ public class Task {
     Long id;
     String object;
     String content;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    Date date;
+    String date;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Parcelle parcelle;

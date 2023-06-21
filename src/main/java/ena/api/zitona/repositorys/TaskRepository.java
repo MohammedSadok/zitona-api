@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task,Long> {
     List<Task> findTasksByParcelleId (Long id);
-    List<Task> findTasksByParcelleIdAndDate (Long parcelle_id, Date date);
+    List<Task> findTasksByParcelleIdAndDateLike (Long parcelle_id, String date);
 
 }
