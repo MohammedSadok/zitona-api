@@ -2,7 +2,7 @@ package ena.api.zitona.controllers;
 
 import ena.api.zitona.entitys.NotificationMessage;
 import ena.api.zitona.entitys.Task;
-import ena.api.zitona.repositorys.ParcelleRepository;
+import ena.api.zitona.repositorys.UserRepository;
 import ena.api.zitona.response.ResponseData;
 import ena.api.zitona.services.PushNotificationService;
 import ena.api.zitona.services.TaskService;
@@ -19,14 +19,14 @@ import java.util.List;
 public class TaskController {
     private final TaskService taskService;
     private final PushNotificationService pushNotificationService;
-    private final ParcelleRepository parcelleRepository;
+    private final UserRepository userRepository;
 
-    public TaskController(TaskService taskService, PushNotificationService pushNotificationService, ParcelleRepository parcelleRepository) {
+    public TaskController(TaskService taskService, PushNotificationService pushNotificationService,
+                          UserRepository userRepository) {
         this.taskService = taskService;
         this.pushNotificationService = pushNotificationService;
-        this.parcelleRepository = parcelleRepository;
+        this.userRepository = userRepository;
     }
-
 
     @GetMapping("/parcelle/{id}")
     public ResponseEntity<ResponseData<List<Task>>> getTasksByParcelleId(@PathVariable Long id) {
@@ -50,13 +50,12 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<ResponseData<Task>> saveTask(@RequestBody Task task) {
-        long id = parcelleRepository.findUserIdByParcelleId(task.getParcelle().getId());
-        NotificationMessage notificationMessage = new NotificationMessage(id,task.getObject(),task.getContent());
+        Long id = userRepository.findUserIdByParcelleId(task.getParcelle().getId());
+        NotificationMessage notificationMessage = new NotificationMessage(id, task.getContent(), task.getObject());
         pushNotificationService.sendNotificationByToken(notificationMessage);
         Task savedTask = taskService.saveTask(task);
         ResponseData<Task> responseData = new ResponseData<>(savedTask, HttpStatus.CREATED, "Task saved successfully.");
         return ResponseEntity.status(HttpStatus.CREATED).body(responseData);
-
     }
 
     @GetMapping("/{id}")

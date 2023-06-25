@@ -2,6 +2,7 @@ package ena.api.zitona.services;
 
 import ena.api.zitona.entitys.Recolte;
 import ena.api.zitona.repositorys.RecolteRepository;
+import ena.api.zitona.repositorys.TraitementRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,9 +12,12 @@ import java.util.List;
 @Transactional
 public class RecolteServiceImpl implements RecolteService{
     private final RecolteRepository recolteRepository;
+    private final TraitementRepository traitementRepository;
 
-    public RecolteServiceImpl(RecolteRepository recolteRepository) {
+    public RecolteServiceImpl(RecolteRepository recolteRepository,
+                              TraitementRepository traitementRepository) {
         this.recolteRepository = recolteRepository;
+        this.traitementRepository = traitementRepository;
     }
 
     @Override
@@ -52,5 +56,10 @@ public class RecolteServiceImpl implements RecolteService{
     @Override
     public double calculateTotalQuantiteByParcelleId(Long parcelleId) {
         return recolteRepository.calculateTotalQuantiteByParcelleId(parcelleId);
+    }
+
+    @Override
+    public float calculateTotalCoutByParcelleId(Long id) {
+        return traitementRepository.calculateTotalCoutByParcelleId(id);
     }
 }

@@ -17,10 +17,11 @@ public class Recolte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private double quantite;
-    private String qualite;
+    @Enumerated(EnumType.STRING)
+    private Qualite qualite;
     private String commentaire;
     @Enumerated(EnumType.STRING)
     private Methode methode;

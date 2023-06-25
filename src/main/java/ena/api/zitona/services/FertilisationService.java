@@ -15,5 +15,7 @@ public interface FertilisationService {
     void deleteFertilisation(Fertilisation fertilisation);
 
     public List<Fertilisation> findAllByParcelleId(Long id);
+
+    float calculateTotalCoutByParcelleId (Long id);
 }
 

@@ -1,12 +1,15 @@
 package ena.api.zitona.controllers;
 
 import ena.api.zitona.entitys.Parcelle;
-import ena.api.zitona.entitys.ParcelleMalade;
+import ena.api.zitona.response.ResponseData;
+import ena.api.zitona.services.FertilisationService;
 import ena.api.zitona.services.ParcelleService;
+import ena.api.zitona.services.RecolteService;
+import ena.api.zitona.services.TraitementService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ena.api.zitona.response.ResponseData;
+
 import java.util.List;
 
 @RestController
@@ -14,10 +17,17 @@ import java.util.List;
 public class ParcelleController {
 
     private final ParcelleService parcelleService;
+    private final RecolteService recolteService;
+    private final FertilisationService fertilisationService;
+    private final TraitementService traitementService;
 
-    public ParcelleController(ParcelleService parcelleService) {
+    public ParcelleController(ParcelleService parcelleService, RecolteService recolteService, FertilisationService fertilisationService, TraitementService traitementService) {
         this.parcelleService = parcelleService;
+        this.recolteService = recolteService;
+        this.fertilisationService = fertilisationService;
+        this.traitementService = traitementService;
     }
+
 
     @PostMapping
     public ResponseEntity<ResponseData<Parcelle>> createParcelle(@RequestBody Parcelle parcelle) {
@@ -41,6 +51,26 @@ public class ParcelleController {
             return ResponseEntity.ok(responseData);
         } else {
             ResponseData<Parcelle> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
+            return ResponseEntity.status(HttpStatus.OK).body(responseData);
+        }
+    }
+
+    @GetMapping("/depence/{id}")
+    public ResponseEntity<ResponseData<Float>> calculateTotalCoutByParcelleId(@PathVariable Long id) {
+        Parcelle parcelle = parcelleService.findParcelleById(id);
+        if (parcelle != null) {
+            float coutRecolte = recolteService.calculateTotalCoutByParcelleId(id);
+            float coutFertilisation = fertilisationService.calculateTotalCoutByParcelleId(id);
+            float coutTraitement = traitementService.calculateTotalCoutByParcelleId(id);
+            ResponseData<Float> responseData = new ResponseData<>
+                    (
+                            coutRecolte + coutFertilisation + coutTraitement,
+                            HttpStatus.OK,
+                            "data retrieved successfully"
+                    );
+            return ResponseEntity.ok(responseData);
+        } else {
+            ResponseData<Float> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
             return ResponseEntity.status(HttpStatus.OK).body(responseData);
         }
     }

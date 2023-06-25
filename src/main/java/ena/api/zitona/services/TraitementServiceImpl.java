@@ -50,4 +50,9 @@ public class TraitementServiceImpl implements TraitementService{
     public List<Traitement> findAllByParcelleId(Long id) {
         return traitementRepository.findAllByParcelleId(id);
     }
+
+    @Override
+    public float calculateTotalCoutByParcelleId(Long id) {
+        return traitementRepository.calculateTotalCoutByParcelleId(id);
+    }
 }

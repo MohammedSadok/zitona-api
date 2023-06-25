@@ -11,4 +11,5 @@ public interface TraitementService {
     void deleteTraitement(Long id);
     List<Traitement> getAllTraitements();
     public List<Traitement> findAllByParcelleId(Long id);
+    float calculateTotalCoutByParcelleId (Long id);
 }

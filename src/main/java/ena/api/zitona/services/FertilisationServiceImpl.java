@@ -44,4 +44,9 @@ public class FertilisationServiceImpl implements FertilisationService {
     public List<Fertilisation> findAllByParcelleId(Long id) {
         return fertilisationRepository.findAllByParcelleId(id);
     }
+
+    @Override
+    public float calculateTotalCoutByParcelleId(Long id) {
+        return fertilisationRepository.calculateTotalCoutByParcelleId(id);
+    }
 }

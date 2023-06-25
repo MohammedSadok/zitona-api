@@ -11,4 +11,6 @@ public interface ParcelleRepository extends JpaRepository<Parcelle,Long> {
     public List<Parcelle> findAllByUserId (long Id);
     @Query("SELECT p.user.id FROM Parcelle p WHERE p.id = :parcelleId")
     Long findUserIdByParcelleId(@Param("parcelleId") Long parcelleId);
+
+
 }
