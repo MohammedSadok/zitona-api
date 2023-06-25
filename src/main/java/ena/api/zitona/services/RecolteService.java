@@ -13,5 +13,5 @@ public interface RecolteService {
     Recolte updateRecolte(Recolte recolte);
     List<Recolte> findAllByParcelleId(Long parcelleId);
     double calculateTotalQuantiteByParcelleId(Long parcelleId);
-    float calculateTotalCoutByParcelleId (Long id);
+    double calculateTotalCoutByParcelleId (Long parcelleId);
 }

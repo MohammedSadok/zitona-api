@@ -56,23 +56,12 @@ public class ParcelleController {
     }
 
     @GetMapping("/depence/{id}")
-    public ResponseEntity<ResponseData<Float>> calculateTotalCoutByParcelleId(@PathVariable Long id) {
-        Parcelle parcelle = parcelleService.findParcelleById(id);
-        if (parcelle != null) {
-            float coutRecolte = recolteService.calculateTotalCoutByParcelleId(id);
-            float coutFertilisation = fertilisationService.calculateTotalCoutByParcelleId(id);
-            float coutTraitement = traitementService.calculateTotalCoutByParcelleId(id);
-            ResponseData<Float> responseData = new ResponseData<>
-                    (
-                            coutRecolte + coutFertilisation + coutTraitement,
-                            HttpStatus.OK,
-                            "data retrieved successfully"
-                    );
-            return ResponseEntity.ok(responseData);
-        } else {
-            ResponseData<Float> responseData = new ResponseData<>(null, HttpStatus.OK, "Parcelle not found");
-            return ResponseEntity.status(HttpStatus.OK).body(responseData);
-        }
+    public ResponseEntity<ResponseData<Double>> calculateTotalCoutByParcelleId(@PathVariable Long id) {
+        double total = fertilisationService.calculateTotalCoutByParcelleId(id);
+        double total2 = recolteService.calculateTotalCoutByParcelleId(id);
+        double total3 = traitementService.calculateTotalCoutByParcelleId(id);
+        ResponseData<Double> responseData = new ResponseData<>(total + total2 + total3, HttpStatus.OK, "Retrieved total recoltes by Parcelle ID successfully");
+        return ResponseEntity.ok(responseData);
     }
 
     @PutMapping("/{id}")

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface TraitementRepository extends JpaRepository<Traitement, Long> {
     public List<Traitement> findAllByParcelleId(Long id);
-    @Query("SELECT SUM(r.cout) FROM Traitement r WHERE r.parcelle.id = :parcelleId")
+    @Query("SELECT COALESCE(SUM(r.cout), 0) FROM Traitement r WHERE r.parcelle.id = :parcelleId")
     float calculateTotalCoutByParcelleId(@Param("parcelleId") Long parcelleId);
 }

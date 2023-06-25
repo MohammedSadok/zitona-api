@@ -10,6 +10,6 @@ import java.util.List;
 public interface FertilisationRepository extends JpaRepository<Fertilisation, Long> {
     public List<Fertilisation> findAllByParcelleId(Long id);
 
-    @Query("SELECT SUM(r.cout) FROM Fertilisation r WHERE r.parcelle.id = :parcelleId")
+    @Query("SELECT COALESCE(SUM(r.cout), 0) FROM Fertilisation r WHERE r.parcelle.id = :parcelleId")
     float calculateTotalCoutByParcelleId(@Param("parcelleId") Long parcelleId);
 }
