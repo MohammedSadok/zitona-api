@@ -11,5 +11,9 @@ public interface UserService {
     public User findUserById(Long id);
     public User deleteUser(User User);
     public User updateUser (User User);
+    public void updateNomAndPrenom (long id,String nom,String prenom);
+    public void updatePassword (long id,String password);
+    public void updateEmail(long id,String email);
+    public void updateNumTel(long id,String telephone);
     public Optional<User> findUserByEmail (String email);
 }

@@ -55,6 +55,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateNomAndPrenom(long id, String nom, String prenom) {
+        userRepository.updateNomAndPrenom(id, nom, prenom);
+    }
+
+    @Override
+    public void updatePassword(long id, String password) {
+        userRepository.updatePassword(id, password);
+    }
+
+    @Override
+    public void updateEmail(long id, String email) {
+        Optional<User> existingUser = userRepository.findUserByEmail(email);
+        if (existingUser.isPresent() && !existingUser.get().getId().equals(id)) {
+            throw new IllegalArgumentException("Email already exists for another user");
+        }
+        userRepository.updateEmail(id, email);
+    }
+
+    @Override
+    public void updateNumTel(long id, String telephone) {
+        userRepository.updateNumTel(id, telephone);
+    }
+
+    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
 
