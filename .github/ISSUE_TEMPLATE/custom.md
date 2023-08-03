@@ -12,7 +12,7 @@ assignees: ''
 **So thar** [benefit]
 
 
-###details and Assumptions:
+### Details and Assumptions:
 * [document what you know]
 
 ### Acceptance Criteria:
